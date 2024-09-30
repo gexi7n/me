@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100vh;
+        background-color: #f6f7fb;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        width: 100%;
+        height: 64px;
+        background-color: #fff;
+        border-bottom: 1px solid #d9d9d9;
+      }
+      .logoWrapper {
+        display: flex;
+      }
+      .logoWrapper p {
+        margin-left: 14px;
+        color: var(
+          --Labels-Secondary,
+          var(--Labels-Secondary, rgba(60, 60, 67, 0.6))
+        );
+        font-family: "Lexend Deca";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 28px;
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        padding: 12px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        overflow: hidden;
+      }
+      .static-bar {
+        display: flex;
+        align-items: flex-end;
+        gap: 20px;
+        align-self: stretch;
+      }
+      .static-title {
+        flex: 1 0 0;
+        color: var(--Labels-Primary, var(--Labels-Primary, #000));
+        font-feature-settings: "liga" off, "clig" off;
+        font-family: "SF Pro";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px; /* 133.333% */
+        letter-spacing: 0.38px;
+      }
+      .status-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+      .device-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .device-icon {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        background: var(--Colors-Indigo, #5856d6);
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      .alert-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .alert-icon {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        background: #ec221f;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      #status-grids {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        align-self: stretch;
+        overflow: auto;
+      }
+      .grids-header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        align-self: stretch;
+      }
+      .device-grid {
+        width: 8px;
+        height: 8px;
+        background: #ececf4;
+      }
+      #th-container {
+        display: flex;
+        flex: 1;
+        gap: 4px;
+      }
+      .th-cell {
+        flex: 1;
+        min-width: 47px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        align-self: stretch;
+        color: var(
+          --Labels-Secondary,
+          var(--Labels-Secondary, rgba(60, 60, 67, 0.6))
+        );
+        text-align: center;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 22px; /* 183.333% */
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        align-self: stretch;
+      }
+      .purple {
+        background-color: #5856d6;
+      }
+      .day-grid {
+        display: flex;
+        align-items: flex-start;
+        gap: 1px;
+        flex: 1 0 0;
+      }
+      .hour-grid {
+        height: 8px;
+        width: 1px;
+        border-radius: 1px;
+        background: #14ae5c;
+      }
+      #time-grid-container {
+        display: flex;
+        flex: 1;
+        gap: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <header>
+      <div class="logoWrapper">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26"
+          height="28"
+          viewBox="0 0 26 28"
+          fill="none"
+        >
+          <path
+            d="M12.5 0.288675C12.8094 0.110042 13.1906 0.110042 13.5 0.288675L24.6244 6.71132C24.9338 6.88996 25.1244 7.22008 25.1244 7.57735V20.4226C25.1244 20.7799 24.9338 21.11 24.6244 21.2887L13.5 27.7113C13.1906 27.89 12.8094 27.89 12.5 27.7113L1.37564 21.2887C1.06624 21.11 0.875645 20.7799 0.875645 20.4226V7.57735C0.875645 7.22009 1.06624 6.88996 1.37564 6.71132L12.5 0.288675Z"
+            fill="url(#paint0_linear_22_96087)"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_22_96087"
+              x1="13"
+              y1="0"
+              x2="13"
+              y2="28"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#FFCD1E" />
+              <stop offset="1" stop-color="#FA541C" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <p>Space365 ｜ StatusBoard</p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="static-bar">
+        <p class="static-title">2024年8月27日至9月27日</p>
+        <div class="status-wrapper">
+          <div class="device-status">
+            <div class="device-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_22_96095)">
+                  <path
+                    d="M14 4H2C1.73478 4 1.48043 4.10536 1.29289 4.29289C1.10536 4.48043 1 4.73478 1 5V11C1 11.2652 1.10536 11.5196 1.29289 11.7071C1.48043 11.8946 1.73478 12 2 12H14C14.2652 12 14.5196 11.8946 14.7071 11.7071C14.8946 11.5196 15 11.2652 15 11V5C15 4.73478 14.8946 4.48043 14.7071 4.29289C14.5196 4.10536 14.2652 4 14 4ZM11.75 8.75C11.6017 8.75 11.4567 8.70601 11.3333 8.6236C11.21 8.54119 11.1139 8.42406 11.0571 8.28701C11.0003 8.14997 10.9855 7.99917 11.0144 7.85368C11.0434 7.7082 11.1148 7.57456 11.2197 7.46967C11.3246 7.36478 11.4582 7.29335 11.6037 7.26441C11.7492 7.23547 11.9 7.25032 12.037 7.30709C12.1741 7.36386 12.2912 7.45999 12.3736 7.58332C12.456 7.70666 12.5 7.85166 12.5 8C12.5 8.19891 12.421 8.38968 12.2803 8.53033C12.1397 8.67098 11.9489 8.75 11.75 8.75Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_22_96095">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class="static-title">100</div>
+          </div>
+          <div class="alert-status">
+            <div class="alert-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_22_96101)">
+                  <path
+                    d="M14.8002 11.7557L9.33456 2.26379C9.19798 2.03124 9.00299 1.83843 8.76894 1.70445C8.53488 1.57048 8.26987 1.5 8.00018 1.5C7.73049 1.5 7.46549 1.57048 7.23143 1.70445C6.99737 1.83843 6.80239 2.03124 6.66581 2.26379L1.20018 11.7557C1.06877 11.9806 0.999512 12.2364 0.999512 12.4969C0.999512 12.7574 1.06877 13.0132 1.20018 13.2382C1.33501 13.4721 1.52966 13.666 1.76416 13.7999C1.99865 13.9338 2.26455 14.0028 2.53456 14H13.4658C13.7356 14.0026 14.0012 13.9334 14.2355 13.7996C14.4698 13.6657 14.6642 13.4719 14.7989 13.2382C14.9305 13.0134 15 12.7576 15.0002 12.4971C15.0004 12.2366 14.9314 11.9807 14.8002 11.7557ZM7.50018 6.50004C7.50018 6.36743 7.55286 6.24026 7.64663 6.14649C7.7404 6.05272 7.86757 6.00004 8.00018 6.00004C8.13279 6.00004 8.25997 6.05272 8.35374 6.14649C8.4475 6.24026 8.50018 6.36743 8.50018 6.50004V9.00004C8.50018 9.13265 8.4475 9.25983 8.35374 9.35359C8.25997 9.44736 8.13279 9.50004 8.00018 9.50004C7.86757 9.50004 7.7404 9.44736 7.64663 9.35359C7.55286 9.25983 7.50018 9.13265 7.50018 9.00004V6.50004ZM8.00018 12C7.85185 12 7.70684 11.9561 7.5835 11.8736C7.46017 11.7912 7.36404 11.6741 7.30727 11.5371C7.25051 11.4 7.23565 11.2492 7.26459 11.1037C7.29353 10.9582 7.36496 10.8246 7.46985 10.7197C7.57474 10.6148 7.70838 10.5434 7.85386 10.5145C7.99935 10.4855 8.15015 10.5004 8.28719 10.5571C8.42424 10.6139 8.54137 10.71 8.62378 10.8334C8.7062 10.9567 8.75018 11.1017 8.75018 11.25C8.75018 11.449 8.67116 11.6397 8.53051 11.7804C8.38986 11.921 8.19909 12 8.00018 12Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_22_96101">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class="static-title">8</div>
+          </div>
+        </div>
+      </div>
+      <div id="status-grids">
+        <div class="grids-header">
+          <div class="device-grid"></div>
+          <div id="th-container"></div>
+        </div>
+        <div class="row">
+          <div class="device-grid purple"></div>
+          <div id="time-grid-container"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 获取要插入 div 的容器
+      const thContainer = document.getElementById("th-container");
+      const timeGridContainer = document.getElementById("time-grid-container");
+      const statusGrids = document.getElementById("status-grids");
+      const timeRow = document.querySelector(".row");
+      console.log(timeRow);
+
+      // 循环生成 10 个 div
+      for (let i = 1; i <= 31; i++) {
+        // 创建新的 div 元素
+        const thGrid = document.createElement("div");
+        // 设置 div 的内容
+        thGrid.textContent = `${i}`;
+        thGrid.className = "th-cell";
+        // 将新 div 添加到容器中
+        thContainer.appendChild(thGrid);
+      }
+      for (let i = 1; i <= 31; i++) {
+        const dayGrid = document.createElement("div");
+        dayGrid.className = "day-grid";
+        for (let i = 1; i <= 24; i++) {
+          const hourGrid = document.createElement("div");
+          hourGrid.className = "hour-grid";
+          dayGrid.appendChild(hourGrid);
+        }
+        timeGridContainer.appendChild(dayGrid);
+      }
+
+      for (i = 1; i <= 100; i++) {
+        const cloneRow = timeRow.cloneNode(true);
+        statusGrids.appendChild(cloneRow);
+      }
+    </script>
+  </body>
+</html>
